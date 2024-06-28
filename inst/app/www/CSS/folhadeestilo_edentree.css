@@ -1,0 +1,18 @@
+/* Cor do Bucket */
+.default-sortable .rank-list-item:hover:not(.disabled) {
+  background-color: #8a000063 !important;
+  cursor: grab;
+}
+ .default-sortable .rank-list-item.sortable-selected, .default-sortable .rank-list-item.sortable-chosen, .default-sortable .rank-list-item.sortable-ghost.sortable-chosen, .default-sortable .rank-list-item.sortable-drag {
+  background-color: #8a000085 !important;
+  border: 1px solid #850000c0 !important;
+}
+
+/* Imagens responsivas */
+  .responsive_img_tutorial_tabs {
+    width: 100%;
+    max-height: 200px;
+    height: auto;
+    object-fit: contain;
+  }
+

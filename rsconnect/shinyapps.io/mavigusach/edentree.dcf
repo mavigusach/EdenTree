@@ -1,0 +1,10 @@
+name: edentree
+title:
+username: mavigusach
+account: mavigusach
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 10861604
+bundleId: 8749109
+url: https://mavigusach.shinyapps.io/edentree/
+version: 1

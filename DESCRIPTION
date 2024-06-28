@@ -1,0 +1,24 @@
+Package: edentree
+Title: EdenTree
+Version: 0.0.1.0000
+Authors@R: 
+    person(given = "Marcelo",
+           family = "Chaves",
+           role = c("aut", "cre"),
+           email = "marcelo160102@gmail.com.com")
+Description: What the package does (one paragraph).
+License: What license is it under?
+Imports: 
+    bs4Dash,
+    config (>= 0.3.1),
+    DT,
+    golem (>= 0.4.1),
+    readxl,
+    shiny (>= 1.7.4),
+    shinyscreenshot,
+    sortable,
+    tippy,
+    writexl
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1
