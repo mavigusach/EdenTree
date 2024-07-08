@@ -394,28 +394,40 @@ output$baixar_planilha_modelo<- downloadHandler(
 
   })
   #Grafico Producao - Ima - ICA
-  output$grafico_prod_ima_ica<- renderPlot({
+  output$grafico_prod<- renderPlot({
+  ggplot2::ggplot(data = dados_tabela$producao)+
+    {if(all(dados_tabela$producao["Volume"]==0, na.rm = TRUE)==FALSE && nrow(dados_tabela$producao)>1)ggplot2::geom_line(size=1.5,mapping = ggplot2::aes(x= Ano, y = Volume,color="Produção (m³/ha)"),na.rm=TRUE)}+
+    ggplot2:: scale_color_manual(values = c("Produção (m³/ha)" = "darkred"))+
+    ggplot2::xlab("Ano")+
+    ggplot2::ylab("Produção (m³/ha)")+
+    ggplot2::theme_classic()+
+    ggplot2::theme(legend.position = "none",plot.margin = ggplot2::unit(c(0, 1, 0, 1), "cm"),axis.title = ggplot2::element_text(size=18),axis.text = ggplot2::element_text(size=15))+
+    ggpubr::grids(axis = c("xy"), color = "grey92", size = 1, linetype = "solid")
+  })
+  output$grafico_ima_ica<-renderPlot({
     ggplot2::ggplot(data = dados_tabela$producao)+
-      {if(all(dados_tabela$producao["Volume"]==0, na.rm = TRUE)==FALSE && nrow(dados_tabela$producao)>1)ggplot2::geom_line(mapping = ggplot2::aes(x= Ano, y = Volume,color="Produção (m³/ha)"),na.rm=TRUE)}+
-      {if(all(dados_tabela$producao["Volume"]==0, na.rm = TRUE)==FALSE && nrow(dados_tabela$producao)>1)ggplot2::geom_line(mapping = ggplot2::aes(x= Ano, y = IMA,color="IMA (m³/ha/ano)"),na.rm=TRUE)}+
-      {if(all(dados_tabela$producao["Volume"]==0, na.rm = TRUE)==FALSE && nrow(dados_tabela$producao)>1)ggplot2::geom_line(mapping = ggplot2::aes(x= Ano, y = ICA,color="ICA (m³/ha/ano)"),na.rm=TRUE)}+
-      ggplot2:: scale_color_manual(name = "Legenda:", values = c("Produção (m³/ha)" = "darkred","IMA (m³/ha/ano)" = "darkgreen", "ICA (m³/ha/ano)" = "darkblue"))+
+      {if(all(dados_tabela$producao["Volume"]==0, na.rm = TRUE)==FALSE && nrow(dados_tabela$producao)>1)ggplot2::geom_line(size=1.5,mapping = ggplot2::aes(x= Ano, y = IMA,color="IMA (m³/ha/ano)"),na.rm=TRUE)}+
+      {if(all(dados_tabela$producao["Volume"]==0, na.rm = TRUE)==FALSE && nrow(dados_tabela$producao)>1)ggplot2::geom_line(size=1.5,mapping = ggplot2::aes(x= Ano, y = ICA,color="ICA (m³/ha/ano)"),na.rm=TRUE)}+
+      ggplot2:: scale_color_manual(name = "", values = c("IMA (m³/ha/ano)" = "darkgreen", "ICA (m³/ha/ano)" = "darkblue"))+
       ggplot2::xlab("Ano")+
       ggplot2::ylab("Métricas")+
       ggplot2::theme_classic()+
-      ggplot2::theme(legend.title = ggplot2::element_text(size=18),legend.text=ggplot2::element_text(size=15),axis.title = ggplot2::element_text(size=15),axis.text = ggplot2::element_text(size=12))
-    })
+      ggplot2::theme(plot.margin = ggplot2::unit(c(0, 1, 0, 1), "cm"),legend.direction = "vertical",legend.position = "bottom",legend.title = ggplot2::element_text(size=18),legend.text=ggplot2::element_text(size=15),axis.title = ggplot2::element_text(size=18),axis.text = ggplot2::element_text(size=15))+
+      ggpubr::grids(axis = c("xy"), color = "grey92", size = 1, linetype = "solid")
+  })
   output$grafico_rotacao_economica<- renderPlot({
     ggplot2::ggplot(data = dados_tabela$metricas_economicas)+
-      {if(all(dados_tabela$metricas_economicas["VPL"]==0, na.rm = TRUE)==FALSE && nrow(dados_tabela$metricas_economicas)>1)ggplot2::geom_line(mapping = ggplot2::aes(x= Ano, y = VPL,color="VPL (R$/ha)"),na.rm=TRUE)}+
-      {if(all(dados_tabela$metricas_economicas["VPL_Infinito"]==0, na.rm = TRUE)==FALSE  && nrow(dados_tabela$metricas_economicas)>1)ggplot2::geom_line(mapping = ggplot2::aes(x= Ano, y = VPL_Infinito,color="VPL Infinito (R$/ha)"),na.rm=TRUE)}+
-      {if(all(dados_tabela$metricas_economicas["RLPE"]==0, na.rm = TRUE)==FALSE  && nrow(dados_tabela$metricas_economicas)>1)ggplot2::geom_line(mapping = ggplot2::aes(x= Ano, y = RLPE,color="RLPE (R$/ha)"),na.rm=TRUE)}+
-      {if(all(dados_tabela$metricas_economicas["VET"]==0, na.rm = TRUE)==FALSE  && nrow(dados_tabela$metricas_economicas)>1)ggplot2::geom_line(mapping = ggplot2::aes(x= Ano, y = VET,color="VET (R$/ha)"),na.rm=TRUE)}+
-      ggplot2:: scale_color_manual(name = "Legenda:", values = c("VPL (R$/ha)" = "orange","VPL Infinito (R$/ha)" = "purple", "RLPE (R$/ha)" = "magenta" , "VET (R$/ha)" = "darkcyan"))+
+      {if(all(dados_tabela$metricas_economicas["VPL"]==0, na.rm = TRUE)==FALSE && nrow(dados_tabela$metricas_economicas)>1)ggplot2::geom_line(size=1.5,mapping = ggplot2::aes(x= Ano, y = VPL,color="VPL (R$/ha)"),na.rm=TRUE)}+
+      {if(all(dados_tabela$metricas_economicas["VPL_Infinito"]==0, na.rm = TRUE)==FALSE  && nrow(dados_tabela$metricas_economicas)>1)ggplot2::geom_line(size=1.5,mapping = ggplot2::aes(x= Ano, y = VPL_Infinito,color="VPL Infinito (R$/ha)"),na.rm=TRUE)}+
+      {if(all(dados_tabela$metricas_economicas["RLPE"]==0, na.rm = TRUE)==FALSE  && nrow(dados_tabela$metricas_economicas)>1)ggplot2::geom_line(size=1.5,mapping = ggplot2::aes(x= Ano, y = RLPE,color="RLPE (R$/ha)"),na.rm=TRUE)}+
+      {if(all(dados_tabela$metricas_economicas["VET"]==0, na.rm = TRUE)==FALSE  && nrow(dados_tabela$metricas_economicas)>1)ggplot2::geom_line(size=1.5,mapping = ggplot2::aes(x= Ano, y = VET,color="VET (R$/ha)"),na.rm=TRUE)}+
+      ggplot2:: scale_color_manual(name = "", values = c("VPL (R$/ha)" = "orange","VPL Infinito (R$/ha)" = "purple", "RLPE (R$/ha)" = "magenta" , "VET (R$/ha)" = "darkcyan"))+
       ggplot2::xlab("Ano")+
       ggplot2::ylab("Métricas")+
       ggplot2::theme_classic()+
-      ggplot2::theme(legend.title = ggplot2::element_text(size=18),legend.text=ggplot2::element_text(size=15),axis.title = ggplot2::element_text(size=15),axis.text = ggplot2::element_text(size=12))
+      ggplot2::theme(plot.margin = ggplot2::unit(c(0, 1, 0, 1), "cm"),legend.direction = "vertical",legend.position = "bottom",legend.title = ggplot2::element_text(size=18),legend.text=ggplot2::element_text(size=15),axis.title = ggplot2::element_text(size=18),axis.text = ggplot2::element_text(size=15))+
+      ggpubr::grids(axis = c("xy"), color = "grey92", size = 1, linetype = "solid")
+
   })
 
   output$dados_basicos <- renderUI({
@@ -472,8 +484,13 @@ output$baixar_planilha_modelo<- downloadHandler(
                      ),
                      column(width = 6,
                             fluidRow(column(width = 12,
-                            plotOutput("grafico_prod_ima_ica")
-                            )),
+                            plotOutput("grafico_prod")
+                            )
+                            ),
+                            fluidRow(column(width = 12,
+                                            plotOutput("grafico_ima_ica")
+                            )
+                            ),
                             fluidRow(column(width = 12,
                                             uiOutput("resultado_rotacao_silvicultural")
                             ))

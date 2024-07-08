@@ -12,6 +12,7 @@ Imports:
     bs4Dash,
     config (>= 0.3.1),
     DT,
+    ggpubr,
     golem (>= 0.4.1),
     readxl,
     shiny (>= 1.7.4),
