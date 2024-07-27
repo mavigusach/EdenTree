@@ -10,7 +10,7 @@ app_ui <- function(request) {
     golem_add_external_resources(),
     shinyjs::useShinyjs(),
     # Your application UI logic
-    bs4Dash::bs4DashPage(dark = NULL,fullscreen = TRUE,help = NULL,scrollToTop = TRUE, footer = bs4Dash::bs4DashFooter(right =
+    bs4Dash::bs4DashPage(sidebar = ,dark = NULL,fullscreen = TRUE,help = NULL,scrollToTop = TRUE, footer = bs4Dash::bs4DashFooter(right =
                                                                                                              div(
                                                                                                                fluidRow(
                                                                                                                  textOutput("render_Rodape_Direitos_Ano")),
@@ -21,10 +21,13 @@ app_ui <- function(request) {
 
     ,
     left = div(
-      fluidRow(
+      div(
+        uiOutput("render_Rodape_Idioma"),
+      ),
+      div(
         uiOutput("render_Rodape_Tutorial")
       ),
-      fluidRow(
+      div(
         uiOutput("render_Rodape_Sobre_Nos")
       )
     )
