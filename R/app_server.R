@@ -39,6 +39,7 @@ idioma <- reactiveValues(
   rs_label_status_valido = "Valid File!",
   rs_label_status_invalido = "Invalid File!",
   rs_label_status_invalido_aviso = "Check the file extension and its structure!",
+  rs_arquivo_exemplo = "EN-USA",
 
   #Secao Caixa
   label_caixa = "Cash Flow",
@@ -52,17 +53,17 @@ idioma <- reactiveValues(
   fc_label_atividade = "Activity:",
   fc_label_valor = "Value:",
   fc_label_unidade = "Unit:",
-  fc_label_unidade_1 = "$/ha",
-  fc_label_unidade_2 = "$/m³",
+  fc_label_unidade_1 = "US$/ha",
+  fc_label_unidade_2 = "US$/m³",
 
   #Secao Rotacao Economica
   label_rotacao_economica = "Economic Rotation",
   re_metricas = "Metrics",
   re_ano = "Year",
-  re_VPL = "NPV ($/ha)",
-  re_VPL_infinito = "Infinite NPV ($/ha)",
-  re_RLPE = "EAV ($/ha)",
-  re_VET = "LEV ($/ha)",
+  re_VPL = "NPV (US$/ha)",
+  re_VPL_infinito = "Infinite NPV (US$/ha)",
+  re_RLPE = "EAV (US$/ha)",
+  re_VET = "LEV (US$/ha)",
 
   #Rodape
   label_idioma = "Language",
@@ -83,7 +84,7 @@ idioma <- reactiveValues(
   tutorial_1_Dados_1_2 = "1.2. Enter the Planning Horizon in years:",
   tutorial_1_Dados_1_2_note = "•In case of file upload, it will be set automatically.",
   tutorial_1_Dados_1_3 = "1.3. Enter the Annual Interest Rate in Percentage:",
-  tutorial_1_Dados_1_4 = "1.4. Enter the Value of Land in $/ha:",
+  tutorial_1_Dados_1_4 = "1.4. Enter the Value of Land in US$/ha:",
   tutorial_1_Dados_1_5 = "1.5. At the end, click the icon ",
   tutorial_2_Rotacao_Silvicultural = "2. Silvicultural Rotation",
   tutorial_2_Rotacao_Silvicultural_2_1 = "2.1. Enter the Annual Volume Data in m³/ha:",
@@ -132,7 +133,7 @@ observeEvent(input$idioma,{
     updateTextInput(session = session,label = "Project Name:", inputId = "dados_basicos_nome_projeto")
     updateTextInput(session = session,label = "Planning Horizon (years):", inputId = "dados_basicos_horizonte")
     updateTextInput(session = session,label = "Rate (%):", inputId = "dados_basicos_taxa")
-    updateTextInput(session = session,label = "Value of Land ($/ha):", inputId = "dados_basicos_valor_terra")
+    updateTextInput(session = session,label = "Value of Land (US$/ha):", inputId = "dados_basicos_valor_terra")
     updateActionLink(session = session,inputId = "download_relatorio",label = "Download Report")
     idioma$label_dados<- "Data"
 
@@ -152,6 +153,7 @@ observeEvent(input$idioma,{
     idioma$rs_label_status_valido <- "Valid File!"
     idioma$rs_label_status_invalido <- "Invalid File!"
     idioma$rs_label_status_invalido_aviso <- "Check the file extension and its structure!"
+    idioma$rs_arquivo_exemplo <- "EN-USA"
 
     #Secao Caixa
     idioma$label_caixa <- "Cash Flow"
@@ -165,17 +167,17 @@ observeEvent(input$idioma,{
     idioma$fc_label_atividade <- "Activity:"
     idioma$fc_label_valor <- "Value:"
     idioma$fc_label_unidade <- "Unit:"
-    idioma$fc_label_unidade_1 <- "$/ha"
-    idioma$fc_label_unidade_2 <- "$/m³"
+    idioma$fc_label_unidade_1 <- "US$/ha"
+    idioma$fc_label_unidade_2 <- "US$/m³"
 
     #Secao Rotacao Economica
     idioma$label_rotacao_economica <- "Economic Rotation"
     idioma$re_ano <- "Year"
     idioma$re_metricas <- "Metrics"
-    idioma$re_VPL <- "NPV ($/ha)"
-    idioma$re_VPL_infinito <- "Infinite NPV ($/ha)"
-    idioma$re_RLPE <- "EAV ($/ha)"
-    idioma$re_VET <- "LEV ($/ha)"
+    idioma$re_VPL <- "NPV (US$/ha)"
+    idioma$re_VPL_infinito <- "Infinite NPV (US$/ha)"
+    idioma$re_RLPE <- "EAV (US$/ha)"
+    idioma$re_VET <- "LEV (US$/ha)"
 
     #Rodape
     idioma$label_idioma<- "Language"
@@ -196,7 +198,7 @@ observeEvent(input$idioma,{
     idioma$tutorial_1_Dados_1_2 <- "1.2. Enter the Planning Horizon in years:"
     idioma$tutorial_1_Dados_1_2_note <- "•In case of file upload, it will be set automatically."
     idioma$tutorial_1_Dados_1_3 <- "1.3. Enter the Annual Interest Rate in Percentage:"
-    idioma$tutorial_1_Dados_1_4 <- "1.4. Enter the Value of Land in $/ha:"
+    idioma$tutorial_1_Dados_1_4 <- "1.4. Enter the Value of Land in US$/ha:"
     idioma$tutorial_1_Dados_1_5 <- "1.5. At the end, click the icon "
     idioma$tutorial_2_Rotacao_Silvicultural <- "2. Silvicultural Rotation"
     idioma$tutorial_2_Rotacao_Silvicultural_2_1 <- "2.1. Enter the Annual Volume Data in m³/ha:"
@@ -264,6 +266,7 @@ observeEvent(input$idioma,{
     idioma$rs_label_status_valido <- "Arquivo Válido!"
     idioma$rs_label_status_invalido <- "Arquivo Inválido!"
     idioma$rs_label_status_invalido_aviso <- "Verifique a extensão do arquivo e sua estrutura!"
+    idioma$rs_arquivo_exemplo <- "PT-BR"
 
     #Secao Caixa
     idioma$label_caixa <- "Fluxo de Caixa"
@@ -382,7 +385,7 @@ observeEvent(input$download_relatorio,{
   observeEvent(input$btn_caixa_atv,{
 
     if(isTruthy(input$caixa_atividade) && isTruthy(input$caixa_valor)){
-      if(input$caixa_unidade=="R$/ha" | input$caixa_unidade=="$/ha"){
+      if(input$caixa_unidade=="R$/ha" | input$caixa_unidade=="US$/ha"){
       #df_atividades_ha <<- rbind(df_atividades_ha,data.frame(Atividade = input$caixa_atividade , Valor = input$caixa_valor, Unidade = input$caixa_unidade, Etiqueta = ))
 
       #View(df_atividades_ha)
@@ -391,7 +394,7 @@ observeEvent(input$download_relatorio,{
       }
 
 
-      } else if(input$caixa_unidade=="R$/m³" | input$caixa_unidade=="$/m³"){
+      } else if(input$caixa_unidade=="R$/m³" | input$caixa_unidade=="US$/m³"){
       if(input$check_arquivo_rotacao_silvicultural==TRUE){
       for(cont in 1:range$horizonte){
         cont_2<-as.numeric(dados_tabela$producao[1,"Ano"])+cont-1
@@ -534,6 +537,15 @@ observeEvent(input$download_relatorio,{
       analisa_colunas<-readxl::read_excel(input$arquivo_rs$datapath, col_names = TRUE)
       #View(analisa_colunas)
       verifica_colunas_nomes<-colnames(analisa_colunas)
+
+
+      #Verifica arquivo - EN-USA
+      if(verifica_colunas_nomes[1]=="Year" & verifica_colunas_nomes[2]=="Volume"){
+        verifica_colunas_nomes[1]<-"Ano"
+        verifica_colunas_nomes[2]<-"Volume"
+        colnames(analisa_colunas) <- c("Ano","Volume")
+      }
+
       #View(verifica_colunas_nomes)
       if(length(verifica_colunas_nomes)<2){
         values_inputs$file_input_arquivo_state<- "reset"
@@ -687,7 +699,7 @@ output$baixar_planilha_modelo<- downloadHandler(
     paste("Spreadsheet_Example_EdenTree.xlsx", sep="")
   },
   content = function(file) {
-    file.copy(file.path("inst/app/www/PLANILHA_MODELO/Planilha_Modelo_EdenTree.xlsx"),file)
+    file.copy(file.path("inst/app/www/PLANILHA_MODELO/",idioma$rs_arquivo_exemplo,"/Spreadsheet_Example_EdenTree.xlsx"),file)
   }
 )
 #Ano da Rotacao Silvicultural
@@ -791,7 +803,7 @@ output$baixar_planilha_modelo<- downloadHandler(
                           numericInput(inputId = "dados_basicos_taxa", label = "Rate (%):", value = "0", min = "0", max = "100")
                    ),
                    column(width = 6,
-                          numericInput(inputId = "dados_basicos_valor_terra", label = "Value of Land ($/ha):", value = "0", min = "0")
+                          numericInput(inputId = "dados_basicos_valor_terra", label = "Value of Land (US$/ha):", value = "0", min = "0")
                    )
                  )
     )
@@ -1097,8 +1109,7 @@ if(isTruthy(input$dados_basicos_taxa) && isTruthy(input$dados_basicos_valor_terr
   }
 
 dados_tabela$metricas_economicas<<- data.frame("Ano" = 0:range$horizonte, "VPL" = VPL,"VPL_Infinito" = VPLinf,"RLPE" = RLPE, "VET" = VET)
-output$tabela_rotacao_economica <- DT::renderDT(round(dados_tabela$metricas_economicas,4), selection = 'none', colnames= c(idioma$re_ano,idioma$re_VPL,idioma$re_VPL_infinito,idioma$re_RLPE ,idioma$re_VET ),editable = list(
-  target = 'cell', disable = list(columns = c(0, 2, 3,4))), rownames = FALSE,extensions = "Buttons",
+output$tabela_rotacao_economica <- DT::renderDT(round(dados_tabela$metricas_economicas,4), selection = 'none', colnames= c(idioma$re_ano,idioma$re_VPL,idioma$re_VPL_infinito,idioma$re_RLPE ,idioma$re_VET ), rownames = FALSE,extensions = "Buttons",
   options = list(paging = TRUE,    ## paginate the output
                  scrollX = TRUE,   ## enable scrolling on X axis
                  scrollY = TRUE,
@@ -1280,9 +1291,23 @@ observeEvent(input$modal_sobre_nos,{
                      bs4Dash::blockQuote(style="text-align:left;",h5(HTML("<a href='https://www.linkedin.com/in/samuel-jos%C3%A9-silva-soares-da-rocha-652a49111/' target='_blank'>Dr. Samuel José Silva Soares da Rocha</a>")),p("•E-mail: samuel.rocha@ufla.br"),color = "primary")
               ),
               column(width = 4,
-                     bs4Dash::blockQuote(style="text-align:left;",h5(HTML("<a href='https://www.linkedin.com/in/marcelo-vitor-chaves-888681284' target='_blank'>Marcelo Vitor Gualberto Santos Chaves</a>")),p("•E-mail: marcelo160102@gmail.com"),color = "primary")
+                     bs4Dash::blockQuote(style="text-align:left;",h5(HTML("<a href='https://www.escavador.com/sobre/6194151/lucas-rezende-gomide' target='_blank'>Dr. Lucas Rezende Gomide</a>")),p("•E-mail: lucasgomide@ufla.br"),color = "primary")
               )
             ),
+            fluidRow(
+              #height de cada linha 300px para medio,grande
+              #height de cada linha 315px para pequeno
+              # HTML(
+              #   '<iframe width="100%" height="350px" src="www/LINKEDIN/linkedin_users.html" frameborder="0" scrolling="yes"></iframe>'
+              # )
+              
+              column(width = 4,
+                     bs4Dash::blockQuote(style="text-align:left;",h5(HTML("<a href='https://www.linkedin.com/in/marcelo-vitor-chaves-888681284' target='_blank'>Marcelo Vitor Gualberto Santos Chaves</a>")),p("•E-mail: marcelo160102@gmail.com"),color = "primary")
+              ),
+              column(width = 4,
+                     bs4Dash::blockQuote(style="text-align:left;",h5(HTML("<a href='https://www.linkedin.com/in/marcelo-pauletti-919302200/' target='_blank'>Marcelo Lourençoni Pauletti</a>")),p("•E-mail: lourenconi.marcelo@icloud.com"),color = "primary")
+              )
+            )
           )
           , color= "primary")
         )
