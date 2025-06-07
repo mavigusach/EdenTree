@@ -31,8 +31,8 @@ idioma <- reactiveValues(
   area= "1",
   valor_da_terra = "Value of Land",
   #Secao Rotacao Silvicultural
-  label_rotacao_silvicultural = "Silvicultural Rotation",
-  rs_ano = "Year",
+  label_rotacao_silvicultural = "Optimal Biological Rotation Age",
+  rs_ano = "",
   rs_volume = "Volume (m³/ha)",
   rs_volume_2 = "Volume",
   rs_IMA = "MAI (m³/ha/year)",
@@ -65,9 +65,9 @@ idioma <- reactiveValues(
   fc_label_unidade_2 = "USD/m³",
 
   #Secao Rotacao Economica
-  label_rotacao_economica = "Economic Rotation",
+  label_rotacao_economica = "Optimal Financial Rotation Age",
   re_metricas = "Metrics",
-  re_ano = "Year",
+  re_ano = "",
   re_VPL = "NPV (USD/ha)",
   re_VPL_infinito = "Infinite NPV (USD/ha)",
   re_RLPE = "EAA (USD/ha)",
@@ -92,6 +92,7 @@ idioma <- reactiveValues(
   label_sobre_eden_tree = "About EdenTree",
   sobre_eden_tree = "Web application designed to analyze the financial viability of forestry projects developed at the Laboratory of Studies and Projects in Forest Management (LEMAF) of the Federal University of Lavras (UFLA).",
   equipe = "Our Team",
+  artigo ="Access our paper!",
 
   #Tutorial
   tutorial_title = "Tutorial",
@@ -103,7 +104,7 @@ idioma <- reactiveValues(
   tutorial_1_Dados_1_4 = "1.4. Enter the Total Area in ha:",
   tutorial_1_Dados_1_5 = "1.5. Enter Value of Land for total area in ha:",
   tutorial_1_Dados_1_6 = "1.6. Once you have completed the analysis, click on the icon to download the report: ",
-  tutorial_2_Rotacao_Silvicultural = "2. Silvicultural Rotation",
+  tutorial_2_Rotacao_Silvicultural = "2. Optimal Biological Rotation Age",
   tutorial_2_Rotacao_Silvicultural_2_1 = "2.1. Enter the Annual Volume Data in m³/ha:",
   tutorial_2_Rotacao_Silvicultural_2_1_1 = '2.1.1. Manually, by double-clicking each cell in the "Volume (m³/ha)" column of the spreadsheet:',
   tutorial_2_Rotacao_Silvicultural_2_1_2 = '2.1.2. Automatically, activate the "Add File" box and insert an MS Excel (.xlsx) file structured according to the available Example:',
@@ -123,7 +124,7 @@ idioma <- reactiveValues(
   tutorial_3_Caixa_3_6 = '3.6. Build the cash flow for each year by classifying the activities performed using the "drag and drop" method:',
   tutorial_3_Caixa_3_6_note = '•Activities not performed in the year should be kept in the "Activities" section, which will not be accounted for in the calculations.',
   tutorial_3_Caixa_3_7 = '3.7. Click "Generate!".',
-  tutorial_4_Rotacao_Economica = "4. Economic Rotation",
+  tutorial_4_Rotacao_Economica = "4. Optimal Financial Rotation Age",
   tutorial_4_Rotacao_Economica_4_1 = "4.1. Check the generated results:",
   tutorial_img = "EN-USA",
 
@@ -241,8 +242,8 @@ observeEvent(input$idioma,{
     idioma$label_dados<- "Data"
     idioma$valor_da_terra <- "Value of Land"
     #Secao Rotacao Silvicultural
-    idioma$label_rotacao_silvicultural <- "Silvicultural Rotation"
-    idioma$rs_ano <- "Year"
+    idioma$label_rotacao_silvicultural <- "Optimal Biological Rotation Age"
+    idioma$rs_ano <- ""
     idioma$rs_volume <- "Volume (m³/ha)"
     idioma$rs_volume_2 <- "Volume"
     idioma$rs_IMA <- "MAI (m³/ha/year)"
@@ -273,8 +274,8 @@ observeEvent(input$idioma,{
     idioma$fc_label_unidade <- "Unit:"
 
     #Secao Rotacao Economica
-    idioma$label_rotacao_economica <- "Economic Rotation"
-    idioma$re_ano <- "Year"
+    idioma$label_rotacao_economica <- "Optimal Financial Rotation Age"
+    idioma$re_ano <- ""
     idioma$re_metricas <- "Metrics"
     idioma$re_VPL <- paste("NPV (",idioma$moeda,"/ha)",sep = "")
     idioma$re_VPL_infinito <- paste("Infinite NPV (",idioma$moeda,"/ha)",sep = "")
@@ -293,6 +294,7 @@ observeEvent(input$idioma,{
     idioma$label_sobre_eden_tree <- "About EdenTree"
     idioma$sobre_eden_tree <- "Web application designed to analyze the financial viability of forestry projects developed at the Laboratory of Studies and Projects in Forest Management (LEMAF) of the Federal University of Lavras (UFLA)."
     idioma$equipe <- "Our Team"
+    idioma$artigo <- "Access our paper!"
     #Tutorial
     idioma$tutorial_title <- "Tutorial"
     idioma$tutorial_1_Dados <- "1. Data"
@@ -303,7 +305,7 @@ observeEvent(input$idioma,{
     idioma$tutorial_1_Dados_1_4 <- "1.4. Enter the Total Area in ha:"
     idioma$tutorial_1_Dados_1_5 <- "1.5. Enter Value of Land for total area in ha:"
     idioma$tutorial_1_Dados_1_6 <- "1.6. Once you have completed the analysis, click on the icon to download the report: "
-    idioma$tutorial_2_Rotacao_Silvicultural <- "2. Silvicultural Rotation"
+    idioma$tutorial_2_Rotacao_Silvicultural <- "2. Optimal Biological Rotation Age"
     idioma$tutorial_2_Rotacao_Silvicultural_2_1 <- "2.1. Enter the Annual Volume Data in m³/ha:"
     idioma$tutorial_2_Rotacao_Silvicultural_2_1_1 <- '2.1.1. Manually, by double-clicking each cell in the "Volume (m³/ha)" column of the spreadsheet:'
     idioma$tutorial_2_Rotacao_Silvicultural_2_1_2 <- '2.1.2. Automatically, activate the "Add File" box and insert an MS Excel (.xlsx) file structured according to the available Model:'
@@ -323,7 +325,7 @@ observeEvent(input$idioma,{
     idioma$tutorial_3_Caixa_3_6 <- '3.6. Build the cash flow for each year by classifying the activities performed using the "drag and drop" method:'
     idioma$tutorial_3_Caixa_3_6_note <- '•Activities not performed in the year should be kept in the "Activities" section, which will not be accounted for in the calculations.'
     idioma$tutorial_3_Caixa_3_7 <- '3.7. Click "Generate!".'
-    idioma$tutorial_4_Rotacao_Economica <- "4. Economic Rotation"
+    idioma$tutorial_4_Rotacao_Economica <- "4. Optimal Financial Rotation Age"
     idioma$tutorial_4_Rotacao_Economica_4_1 <- "4.1. Check the generated results:"
     idioma$tutorial_img <- "EN-USA"
 
@@ -415,7 +417,7 @@ observeEvent(input$idioma,{
     idioma$label_sobre_eden_tree <- "Sobre a EdenTree"
     idioma$sobre_eden_tree <- "Aplicação Web destinada à análise da viabilidade financeira de projetos florestais desenvolvida no Laboratório de Estudos e Projetos em Manejo Florestal (LEMAF) da Universidade Federal de Lavras (UFLA)."
     idioma$equipe <- "Nossa Equipe"
-
+    idioma$artigo <- "Acesse nosso artigo!"
     #Tutorial
     idioma$tutorial_title <- "Tutorial"
     idioma$tutorial_1_Dados <- "1. Dados"
@@ -1754,6 +1756,9 @@ observeEvent(input$modal_sobre_nos,{
               )
             )
           )
+          , color= "primary"),
+        bs4Dash::blockQuote(
+          h5(icon("file-lines"),HTML(paste(sep = "","<a href='https://www.revistaarvore.ufv.br/rarv/article/view/263865' target='_blank'>",idioma$artigo,"</a>")))
           , color= "primary")
         )
   ))
